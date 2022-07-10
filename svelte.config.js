@@ -1,4 +1,5 @@
 import adapter from '@sveltejs/adapter-auto';
+import path from "path";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -12,6 +13,12 @@ const config = {
     vite: {
       define: {
         'import.meta.env.VERCEL_ANALYTICS_ID': JSON.stringify(process.env.VERCEL_ANALYTICS_ID)
+      },
+      resolve: {
+        alias: {
+          $animations: path.resolve("./src/animations"),
+          $components: path.resolve("./src/components"),
+        }
       }
     }
   }
