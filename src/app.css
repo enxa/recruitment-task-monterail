@@ -11,12 +11,13 @@
   --color-charade: #292A33;
   --color-tuna: #343541;
   --color-jumbo: #85868D;
+  --color-bombay: #AEAEB3;
   --color-alabaster: #F7F7F7;
   --color-mercury: #E5E5E5;
   --color-solitude: #EBF3FE;
   --color-royalblue: #2F80ED;
 
-  --font-large-semibold: 600 8rem/102% 'Eczar', sans-serif;
+  --font-large-semibold: 600 4rem/4rem 'Eczar', sans-serif;
   --font-normal-medium: 500 1.8rem/1.8rem 'Roboto Mono', sans-serif;
   --font-normal-regular: 400 1.8rem/2.1rem 'Roboto', sans-serif;
   --font-small-bold: 700 1.4rem/1.85rem 'Roboto Mono', sans-serif;
@@ -82,3 +83,37 @@ button:focus:not(:focus-visible) {
 @media (min-width: 3200px) { .rim { padding: calc(100vw/24) } }
 @media (min-width: 3520px) { .rim { padding: calc(100vw/24) } }
 @media (min-width: 3840px) { .rim { padding: calc(100vw/24) } }
+
+button {
+  font: var(--font-normal-medium);
+  color: var(--color-white);
+  background: var(--color-crimson);
+  padding: 1.9rem 4rem;
+  margin: .8rem 0;
+  border-radius: 6.4rem;
+  transition: .4s all ease-in-out;
+}
+button:hover {
+  background: var(--color-totempole);
+}
+button:focus:active {
+  background: var(--color-totempole);
+  outline: .5rem solid var(--color-froly);
+}
+
+input {
+  font: var(--font-normal-regular);
+  color: var(--color-tuna);
+  background-color: var(--color-alabaster);
+  padding: 1.75rem 2.4rem;
+  margin: .8rem 0;
+  border-radius: .8rem;
+  transition: .4s all ease-in-out;
+}
+input:hover {
+  background: var(--color-mercury);
+}
+input:focus {
+  background: var(--color-solitude);
+  outline: .1rem solid var(--color-royalblue);
+}
