@@ -1,27 +1,29 @@
 <script>
-  import { user } from '../app.js'
+  import { goto } from '$app/navigation'
+  import { user, showRegisterFormEmailPassword, showRegisterFormNameBirthdate } from '../app.js'
 
   let adult = null
 
   let validatedateOfBirth = () => {
-    if (new Date().getFullYear() - $user.dateOfBirth.split('-')[0] < 18) {
-      adult = false
-    } else {
-      adult = true
-    }
+    new Date().getFullYear() - $user.dateOfBirth.split('-')[0]*1 < 18 ? adult = false : adult = true
   }
 
   let handleSubmit = () => {
+    if (!adult) {
+      return
+    }
+
     if (
-      $user.email && 
-      $user.password && 
-      $user.firstName && 
-      $user.lastName && 
-      $user.dateOfBirth && 
-      $user.acceptPrivayPolicy && 
-      adult
+      $user.email.length > 0 &&
+      $user.password.length > 0 && 
+      $user.firstName.length > 0 && 
+      $user.lastName.length > 0 && 
+      $user.dateOfBirth.length > 0 && 
+      $user.acceptPrivacyPolicy === true
     ) {
-      console.log('submit')
+      goto('/thanks')
+      $showRegisterFormNameBirthdate = false
+      $showRegisterFormEmailPassword = true
     }
   }
 </script>
@@ -46,9 +48,7 @@
   </div>
   <label class="accept-privay-policy">
     <input type=checkbox bind:checked={$user.acceptPrivacyPolicy}>
-    {#if $user.acceptPrivacyPolicy}
       <p>I accept <a href="https://www.monterail.com">Privacy Policy</a></p>
-    {/if}
   </label>
   <div class="buttons">
     <button class="next-step">Next step</button>
