@@ -46,7 +46,7 @@
 <form on:submit|preventDefault={handleSubmit}>
   <label class="email">
     <span>Email</span>
-    <input type="email" placeholder="Something ending with..." required bind:value={$user.email}>
+    <input type="email" placeholder="Something ending with monterail.com" required bind:value={$user.email}>
   </label>
   <label class="password">
     <span>Password</span>
