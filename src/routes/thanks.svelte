@@ -37,5 +37,6 @@
     }
     button {
       margin-top: 4.8rem;
+      text-align: center;
     }
 </style>
