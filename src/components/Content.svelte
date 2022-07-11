@@ -1,12 +1,13 @@
 <script>
   export let headline = ''
   export let subheadline = ''
+  export let textAlign = 'left'
 </script>
 
 <section>
   <div class="headlines">
-    <h1 class="headline">{headline}</h1>
-    <h1 class="subheadline">{subheadline}</h1>
+    <h1 class="headline" style="text-align: {textAlign}">{headline}</h1>
+    <h1 class="subheadline" style="text-align: {textAlign}">{subheadline}</h1>
   </div>
   <div>
     <slot />

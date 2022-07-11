@@ -1,7 +1,3 @@
-<script context="module">
-  export const prerender = true;
-</script>
-
 <script>
   import { showRegisterFormEmailPassword, showRegisterFormNameBirthdate } from '../app.js'
   import Header from '$components/Header.svelte'
