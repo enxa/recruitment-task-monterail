@@ -1,5 +1,6 @@
 <script>
   import { goto } from '$app/navigation'
+  import { slide } from 'svelte/transition'
   import { user, showRegisterFormEmailPassword, showRegisterFormNameBirthdate } from '../app.js'
 
   let adult = null
@@ -43,7 +44,7 @@
   </label>
   <div class="validation-date-of-birth">
     {#if adult === false}
-      <p>You should be minimum 18 years old</p>
+      <p transition:slide>You should be minimum 18 years old</p>
     {/if}
   </div>
   <label class="accept-privay-policy">
@@ -122,6 +123,7 @@
         border-radius: .8rem;
         background: url("/images/tick.svg") no-repeat center center / contain;
         opacity: 1;
+        transition: .4s all ease-in-out;
       }
 
       label.accept-privay-policy a {

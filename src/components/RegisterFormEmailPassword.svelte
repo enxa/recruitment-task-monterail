@@ -1,7 +1,10 @@
 <script>
+  import { slide } from 'svelte/transition'
   import { user, showRegisterFormEmailPassword, showRegisterFormNameBirthdate } from '../app.js'
 
-  let passwordVisible = null;
+  let passwordVisible = null
+
+  let passwordIsValid = false
   
   let passwordValidation = [
     {
@@ -27,14 +30,16 @@
       passwordValidation[i].isValid = true : 
       passwordValidation[i].isValid = false
     })
+    passwordValidation.some(({ isValid }) => isValid === false || isValid === null) ? 
+    passwordIsValid = false : 
+    passwordIsValid = true
   }
 
   let handleSubmit = () => {
-    if (passwordValidation.some(({ isValid }) => isValid === false || isValid === null)) {
-      return
+    if (passwordIsValid === true) {
+      $showRegisterFormEmailPassword = false
+      $showRegisterFormNameBirthdate = true
     }
-    $showRegisterFormEmailPassword = false
-    $showRegisterFormNameBirthdate = true
   }
 </script>
 
@@ -58,11 +63,11 @@
     <input style="display: none">
   </label>
   <div class="validation-password">
-    {#if $user.password}
-      {#each passwordValidation as password}
-        <p class:valid={password.isValid == true} class:invalid={password.isValid == false}>{password.condition}</p>
-      {/each}
-    {/if}
+    {#each passwordValidation as password}
+      {#if $user.password && !passwordIsValid}
+        <p class:valid={password.isValid == true} class:invalid={password.isValid == false} transition:slide>{password.condition}</p>
+      {/if}
+    {/each}
   </div>
   <div class="buttons">
     <button class="next-step">Next step</button>
@@ -118,9 +123,11 @@
     }
       div.validation-password p.valid {
         color: var(--color-junglegreen);
+        transition: .4s color ease-in-out;
       }
       div.validation-password p.invalid {
         color: var(--color-crimson);
+        transition: .4s color ease-in-out;
       }
     div.buttons {
       display: grid;

@@ -1,7 +1,8 @@
 <script>
+  import { fade } from 'svelte/transition'
   import '../app.css';
 </script>
 
-<main>
+<main transition:fade>
   <slot />
 </main>
